@@ -1,0 +1,130 @@
+if: It is used to check only one condition.
+
+Syn:
+	if(condition)
+	statement;
+
+	   (or)
+
+	if(condition)
+	{
+	   statement1;
+	   statement2;	Compound statements
+		:
+		:
+	}
+
+Note: Every compound statement should follows { and }.
+
+	if(num%2==0)
+	System.out.println("Even");
+	if(num%2!=0)
+	System.out.println("Odd");
+
+if-else: It is used To check 2 conditions.
+-------
+
+Syn:
+	if(condition)
+	statement;
+	else
+	statement;
+
+	  (or)
+
+	if(condition)
+	{
+	   compound statements;
+	}
+	else
+	{
+	   compound statements;
+	}
+
+/* To calculate Gross salary of an employee
+		bs<5000 => hra=10%, da=90%
+		otherwise => hra=1000, da=98% 
+
+	bs= 4000
+	hra= 400 
+	da= 3600
+	gs= 8000
+*/
+
+package varunsampleproject;
+import java.util.Scanner;
+
+public class IfElseDemo {
+    public static void main(String[] args) {
+        float bs,hra,da,gs;
+        System.out.println("Enter Basic Salary:");
+        Scanner input=new Scanner(System.in);
+        bs=input.nextFloat();
+        if(bs<5000)
+        {
+            hra=bs*0.1f;
+            da=bs*0.9f;
+        }
+        else
+        {
+            hra=1000;
+            da=bs*0.98f;
+        }
+        gs=bs+hra+da;
+            System.out.println("HRA="+hra);
+            System.out.println("DA="+da);
+            System.out.println("Gross Salary="+gs);
+    }
+    
+}
+
+if-else if-else
+---------------
+  It is used to check more than 2 conditions.
+
+Syn:
+	if(condition)
+	statement;
+	else if(condition)
+	statement;
+	else if(condition)
+	statement;
+	.....
+	.....
+	else
+	statement;
+
+//To check the i/p number is +ve/-ve/zero
+
+package varunsampleproject;
+import java.util.Scanner;
+
+public class IfElseIfElseDemo {
+
+    public static void main(String[] args) {
+            int num;
+            System.out.println("Enter a number:");
+            Scanner input=new Scanner(System.in);
+            num=input.nextInt();
+            if(num>0)
+                System.out.println("+ve");
+            else if(num<0)
+                System.out.println("-ve");
+            else
+                System.out.println("Zero");
+    }
+}
+
+//To check the smallest number in 3 variables.
+	int a,b,c;
+	System.out.println("Enter 3 numbers:");
+	Scanner input=new Scanner(System.in);
+	a=input.nextInt();
+	b=input.nextInt();
+	c=input.nextInt();
+	if(a<b && a<c)
+	System.out.println("a is small");
+	else if(b<a && b<c)
+	System.out.println("b is small");
+	else
+	System.out.println("c is small");

@@ -1,0 +1,99 @@
+//Array of objects
+
+import java.util.Scanner;
+public class Stu {
+    private int sno,age;
+    private String name;
+    public void readStu()
+    {
+        System.out.println("Enter Sno,name,age: ");
+        Scanner input=new Scanner(System.in);
+        sno=input.nextInt();
+        name=input.next();
+        age=input.nextInt();
+    }
+    public void showStu()
+    {
+        System.out.println("SNo:"+sno);
+        System.out.println("Name:"+name);
+        System.out.println("Age:"+age);
+    }
+}
+
+//Main method
+
+public class ArrayObjDemo {
+
+    public static void main(String[] args) {
+        Stu[] s=new Stu[3];
+        System.out.println("Enter 3 records:");
+        for(int i=0;i<s.length;i++)
+        {
+            s[i]=new Stu();
+            s[i].readStu();
+        }
+        System.out.println("\nThe records are...");
+        for(int i=0;i<s.length;i++)
+        s[i].showStu();
+    }
+    
+}
+
+			Constructors and Destructors
+			----------------------------
+Constructors
+------------
+1. The method which have the same name of the class name is called "Constructor".
+
+2. These are automatically executed when the object is created.
+
+3. Constructors doesnot have any return type even void.
+
+4. We can pass arguments through constructor.
+
+5. Constructors can be overloaded.
+
+Syn:
+	public ClassName()
+	{
+
+	}
+
+//Demo on Constructor
+import java.util.Scanner;
+
+public class Bank {
+    private int amt;
+    public Bank()  //Constructor
+    {
+        amt=1000;
+    }
+    public void Deposit()
+    {
+        System.out.println("Enter amt: ");
+        Scanner input=new Scanner(System.in);
+        amt=input.nextInt();
+    }
+    public void Display()
+    {
+        System.out.println("Your amt is: "+amt);
+    }
+}
+
+//Main Method
+
+public class ConstructorDemo {
+
+    public static void main(String[] args) {
+        Bank b=new Bank();
+        b.Display();
+        b.Deposit();
+        b.Display();
+    }
+    
+}
+
+Uses:
+----
+1. Initialization for the data members
+2. For file open, connection open, memory allocation

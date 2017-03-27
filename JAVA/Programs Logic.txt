@@ -1,0 +1,96 @@
+2. Swapping 2 numbers using 3rd variable.
+
+	int a,b,c;
+	1. Read a,b (Scanner input....)
+	2. Write the following logic:
+		c = a;
+		a = b;
+		b = c;
+	3. Display a and b
+
+3. Swapping 2 numbers without using 3rd variable
+		int a,b;
+	1. Read a,b
+	2. Write the following logic:
+		a = a + b;
+		b = a - b;
+		a = a - b;
+	3. Display a and b
+
+4. To convert hours into mins and secs
+	1. Read hours (Scanner input....)
+	2. System.out.println("Mins="+(h*60));
+	3. System.out.println("Secs="+(h*3600));
+
+			3. LOOP's
+			---------
+  The statements which are repetedly executed until a specified condition is true.
+		In Java Programming language we use the following loops:
+		i) for
+		ii) while
+		iii) do-while
+
+	Every loop should contains 3 statements.
+		i) Initialization
+		ii) Condition
+		iii) Incre/Decre
+
+for:
+---
+Syn:
+	for(initialization;condition;incre/decre)
+	{
+			statement(s);
+	}
+
+Increment and Decrement operators
+---------------------------------
+ ++ and -- are known as "Increment and Decrement operators". These operators are also known as "Unary operators".
+	++ means increases by 1 value
+	-- means decreases by 1 value
+  Depending upon variable position these operators can be used in 2 ways.
+	i) Post (After variable) => i++ => substitute, increment
+	ii) Pre (Before variable) => ++i => increment, substitute
+
+Note: i++ is equals to i=i+1
+
+//To print 1 to n numbers
+package varunsampleproject;
+import java.util.Scanner;
+
+public class ForloopDemo {
+
+    public static void main(String[] args) {
+            int n;
+            System.out.println("Enter n value:");
+            Scanner input=new Scanner(System.in);
+            n=input.nextInt();
+            for(int i=1;i<=n;i++)
+                System.out.println(i);
+    }
+    
+}			
+
+Lab programs
+------------
+1. To print 10 to 1 numbers
+2. To print n to 1
+3. To print 2 to n even
+4. To print 1 to n odd
+5. To print n to 2 even
+6. To print n to 1 odd
+7. To calculate sum on n numbers
+	sum = sum + i;(sum=0)
+8. To calculate sum on n even
+9. To calculate sum on n odd
+10. To calculate 5 factorial
+	fact = fact * i;(fact=1)
+
+Assignment operators
+--------------------
+Syn:
+	variable operator = value;
+
+Ex:
+	sum+=i; (sum = sum + i)
+	fact*=i; (fact = fact * i)

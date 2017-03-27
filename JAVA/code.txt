@@ -1,0 +1,60 @@
+//1. No arguments and No return type
+
+package varunsampleproject;
+
+public class NoArgsNoReturnDemo {
+
+    public static void main(String[] args) {
+        printLine(); //Calling
+            System.out.println("\nHello World!");
+            printLine(); //Calling
+    }
+    static void printLine() 
+    {
+        for(int i=1;i<=15;i++)      //Function Def
+            System.out.print("*");
+    }
+}
+
+Variable Declaration
+--------------------
+	These are of 2 types.
+	1. Local variables
+	2. Global variables
+
+Local variables: The variables which are declared in side of the method are called "Local variables". These variables can't be accessed by other functions.
+
+Global variables: The variables which are declared out side of the function are called "Global variables". These variables can be accessed by any function.
+
+//2. Arguments and no return value
+package varunsampleproject;
+import java.util.Scanner;
+public class ArgumentsDemo {
+
+    public static void main(String[] args) {
+        int a,b;
+        System.out.println("Enter 2 numbers:");
+        Scanner input=new Scanner(System.in);
+        a=input.nextInt();
+        b=input.nextInt();
+        Swap(a,b); //Actual parameters
+        
+    }
+    static void Swap(int x,int y) //Formal parameters
+    {
+        int z=x;
+        x=y;
+        y=z;
+        System.out.println("After swapping:"+x+" "+y);
+    }
+}
+
+Different types of arguments:
+----------------------------
+	These are of 2 types.
+	1. Actual parameters
+	2. Formal parameters
+
+1. Actual parameters: The variable which are passing through function are called "Actual parameters". In above program Swap(a,b); here 'a' and 'b' are known as "Actual parameters".
+
+2. Formal parameters: The variables which are declared at function def are called "Formal parameters". In above program void Swap(int x,int y); here 'x' and 'y' are known as "Formal parameters".

@@ -1,0 +1,448 @@
+Java static method
+----------------------
+If you apply static keyword with any method, it is known as static method.
+
+    A static method belongs to the class rather than object of a class.
+    A static method can be invoked without the need for creating an instance of a class.
+    static method can access static data member and can change the value of it.
+
+    //Program to get cube of a given number by static method  
+      
+    class Calculate{  
+      static int cube(int x){  
+      return x*x*x;  
+      }  
+      
+      public static void main(String args[]){  
+      int result=Calculate.cube(5);  
+      System.out.println(result);  
+      }  
+    }  
+
+Restrictions for static method
+-----------------------------------
+There are two main restrictions for the static method. They are:
+
+    The static method can not use non static data member or call non-static method directly.
+    this and super cannot be used in static context.
+
+Java static block
+-------------------
+    Is used to initialize the static data member.
+    It is executed before main method at the time of classloading.
+
+
+Inheritance in Java
+-----------------------
+Inheritance in java is a mechanism in which one object acquires all the properties and behaviors of parent object.
+
+The idea behind inheritance in java is that you can create new classes that are built upon existing classes. When you inherit from an existing class, you can reuse methods and fields of parent class, and you can add new methods and fields also.
+
+Inheritance represents the IS-A relationship, also known as parent-child relationship.
+Why use inheritance in java
+
+    For Method Overriding (so runtime polymorphism can be achieved).
+    For Code Reusability.
+
+Syntax of Java Inheritance
+
+    class Subclass-name extends Superclass-name  
+    {  
+       //methods and fields  
+    }  
+
+The extends keyword indicates that you are making a new class that derives from an existing class.
+
+In the terminology of Java, a class that is inherited is called a super class. The new class is called a subclass.
+
+Different types of inheritances
+------------------------------------
+	i) Single
+	ii) Multi Level
+	iii) Hierarichical
+	iv) Hybrid
+Note: Multiple inheritance is not supported in java through class.
+
+Example on Single Inheritance
+------------------------------------
+ class employee
+{
+        private int eno;
+        private String ename;
+        public void setemp(int no,String name)
+        {
+                eno = no;
+                ename = name;
+        }
+        public void putemp()
+        {
+                System.out.println("Empno : " + eno);
+                System.out.println("Ename : " + ename);
+        }
+}
+class department extends employee
+{
+        private int dno;
+        private String dname;
+        public void setdept(int no,String name)
+        {
+                dno = no;
+                dname = name;
+        }
+        public void putdept()
+        {
+                System.out.println("Deptno : " + dno);
+                System.out.println("Deptname : " + dname);
+        }
+        public static void main(String args[])
+        {
+                department d = new department();
+                d.setemp(100,"aaaa");
+                d.setdept(20,"Sales");
+                d.putemp();
+                d.putdept();
+        }
+}
+            super () -> Keyword used to call the base constructor;
+
+Using the super Keyword
+------------------------------
+The keyword super refers to the superclass and can be used to invoke the superclass’s methods and constructors.
+
+The keyword super refers to the superclass of the class in which super appears. It can be used in two ways:
+	 i) To call a superclass constructor.
+	 ii) To call a superclass method.
+
+Calling Superclass Constructors
+--------------------------------------
+A constructor is used to construct an instance of a class. Unlike properties and methods, the constructors of a superclass are not inherited by a subclass. They can only be invoked from the constructors of the subclasses using the keyword super.
+
+The syntax to call a superclass’s constructor is:
+-------------------------------------------------------
+super(), or super(parameters);
+
+
+Aggregation in Java
+-----------------------
+If a class have an entity reference, it is known as Aggregation. Aggregation represents HAS-A relationship. 
+
+Why use Aggregation?
+
+   For Code Reusability.
+
+When use Aggregation?
+
+    i) Code reuse is also best achieved by aggregation when there is no is-a relationship.
+    ii) Inheritance should be used only if the relationship is-a is maintained throughout the lifetime of the objects involved; otherwise, aggregation is the best choice.
+
+Understanding meaningful example of Aggregation
+-----------------------------------------------------------
+In this example, Employee has an object of Address, address object contains its own informations such as city, state, country etc. In such case relationship is Employee HAS-A address.
+
+Address.java
+
+public class Address {
+String city,state,country;
+
+public Address(String city, String state, String country) {
+	super();
+	this.city = city;
+	this.state = state;
+	this.country = country;
+}
+
+}
+
+public class Emp {
+int id;
+String name;
+Address address;
+
+public Emp(int id, String name,Address address) {
+	this.id = id;
+	this.name = name;
+	this.address=address;
+}
+
+void display(){
+	System.out.println(id+" "+name);
+	System.out.println(address.city+" "+address.state+" "+address.country);
+}
+
+public static void main(String[] args) {
+Address address1=new Address("vsp","AP","india");
+Address address2=new Address("hyd","TS","india");
+
+Emp e=new Emp(111,"Mahesh",address1);
+Emp e2=new Emp(112,"Jagadeesh",address2);
+	
+e.display();
+e2.display();
+	
+}
+}
+
+Method Overriding in Java
+--------------------------------
+
+If subclass (child class) has the same method as declared in the parent class, it is known as method overriding in java.
+
+In other words, If subclass provides the specific implementation of the method that has been provided by one of its parent class, it is known as method overriding.
+
+Usage of Java Method Overriding
+---------------------------------------
+    Method overriding is used to provide specific implementation of a method that is already provided by its super class.
+    Method overriding is used for runtime polymorphism
+
+Rules for Java Method Overriding
+----------------------------------------
+    method must have same name as in the parent class
+    method must have same parameter as in the parent class.
+    must be IS-A relationship (inheritance).
+
+Example
+----------
+    class Bank{  
+    int getRateOfInterest(){return 0;}  
+    }  
+      
+    class SBI extends Bank{  
+    int getRateOfInterest(){return 8;}  
+    }  
+      
+    class ICICI extends Bank{  
+    int getRateOfInterest(){return 7;}  
+    }  
+    class AXIS extends Bank{  
+    int getRateOfInterest(){return 9;}  
+    }  
+      
+    class Test2{  
+    public static void main(String args[]){  
+    SBI s=new SBI();  
+    ICICI i=new ICICI();  
+    AXIS a=new AXIS();  
+    System.out.println("SBI Rate of Interest: "+s.getRateOfInterest());  
+    System.out.println("ICICI Rate of Interest: "+i.getRateOfInterest());  
+    System.out.println("AXIS Rate of Interest: "+a.getRateOfInterest());  
+    }  
+    }  
+
+instanceof
+----------
+
+The java instanceof operator is used to test whether the object is an instance of the specified type (class or subclass or interface).
+
+The instanceof in java is also known as type comparison operator because it compares the instance with type. It returns either true or false. If we apply the instanceof operator with any variable that has null value, it returns false.
+
+Simple example of java instanceof
+----------------------------------------
+    class Simple1{  
+     public static void main(String args[]){  
+     Simple1 s=new Simple1();  
+     System.out.println(s instanceof Simple);//true  
+     }  
+    }  
+
+Casting Objects 
+------------------
+One object reference can be typecast into another object reference. This is called casting object. These are of 2 types. 
+	i) Down casting : When casting an instance of a superclass to a variable of its subclass known as downcasting. If the superclass object is not an instance of the subclass, a runtime ClassCastException occurs.
+
+	ii) Up casting : It is always possible to cast an instance of a subclass to a variable of a superclass known as upcasting, because an instance of a subclass is always an instance of its superclass. 
+
+To enable generic programming, it is a good practice to define a variable with a supertype, which can accept a value of any subtype.
+
+Upcasting
+-----------
+When reference variable of Parent class refers to the object of Child class, it is known as upcasting. For example: 
+
+    class A{}  
+    class B extends A{}  
+
+    A a=new B();//upcasting 
+
+Runtime Polymorphism in Java
+-------------------------------------
+Runtime polymorphism or Dynamic Method Dispatch is a process in which a call to an overridden method is resolved at runtime rather than compile-time.
+
+In this process, an overridden method is called through the reference variable of a superclass. The determination of the method to be called is based on the object being referred to by the reference variable. 
+
+    class Bank{  
+    int getRateOfInterest(){return 0;}  
+    }  
+      
+    class SBI extends Bank{  
+    int getRateOfInterest(){return 8;}  
+    }  
+      
+    class ICICI extends Bank{  
+    int getRateOfInterest(){return 7;}  
+    }  
+    class AXIS extends Bank{  
+    int getRateOfInterest(){return 9;}  
+    }  
+      
+    class Test3{  
+    public static void main(String args[]){  
+    Bank b1=new SBI();  
+    Bank b2=new ICICI();  
+    Bank b3=new AXIS();  
+    System.out.println("SBI Rate of Interest: "+b1.getRateOfInterest());  
+    System.out.println("ICICI Rate of Interest: "+b2.getRateOfInterest());  
+    System.out.println("AXIS Rate of Interest: "+b3.getRateOfInterest());  
+    }  
+    }  
+
+static binding
+---------------
+When type of the object is determined at compiled time(by the compiler), it is known as static binding.
+
+If there is any private, final or static method in a class, there is static binding.
+Example of static binding
+
+    class Dog{  
+     private void eat(){System.out.println("dog is eating...");}  
+      
+     public static void main(String args[]){  
+      Dog d1=new Dog();  
+      d1.eat();  
+     }  
+    }  
+
+Dynamic binding
+--------------------
+When type of the object is determined at run-time, it is known as dynamic binding.
+Example of dynamic binding
+
+    class Animal{  
+     void eat(){System.out.println("animal is eating...");}  
+    }  
+      
+    class Dog extends Animal{  
+     void eat(){System.out.println("dog is eating...");}  
+      
+     public static void main(String args[]){  
+      Animal a=new Dog();  
+      a.eat();  
+     }  
+    }  
+
+In the above example object type cannot be determined by the compiler, because the instance of Dog is also an instance of Animal.So compiler doesn't know its type, only its base type.
+
+Abstract class in Java
+--------------------------
+A class that is declared with abstract keyword, is known as abstract class in java. It can have abstract and non-abstract methods (method with body).
+
+Syn:-
+	abstract class ClassName
+	{
+		//methods with or without def
+	}
+
+Abstraction is a process of hiding the implementation details and showing only functionality to the user.
+
+There are two ways to achieve abstraction in java
+
+    Abstract class (0 to 100%)
+    Interface (100%)
+
+Note:
+	 It needs to be extended and its method implemented. 
+	 It cannot be instantiated. 
+
+Abstract Method
+-------------------
+Syn:-
+	abstract returntype methodName(); //without def
+	
+Example
+----------
+abstract class Bank{    
+abstract int getRateOfInterest();    
+}    
+    
+class SBI extends Bank{    
+int getRateOfInterest(){return 7;}    
+}    
+class PNB extends Bank{    
+int getRateOfInterest(){return 7;}    
+}    
+    
+class TestBank{    
+public static void main(String args[]){    
+Bank b=new SBI();//if object is PNB, method of PNB will be invoked    
+int interest=b.getRateOfInterest();    
+System.out.println("Rate of Interest is: "+interest+" %");    
+}}    
+
+Interface in Java
+-------------------
+An interface in java is a blueprint of a class. It has static constants and abstract methods only.  It is a collection of abstract methods.
+
+The interface in java is a mechanism to achieve fully abstraction. There can be only abstract methods in the java interface not method body. It is used to achieve fully abstraction and multiple inheritance in Java.
+
+Java Interface also represents IS-A relationship.
+
+It cannot be instantiated just like abstract class.
+
+Uses
+------
+    It is used to achieve fully abstraction.
+    By interface, we can support the functionality of multiple inheritance.
+   
+Note:
+In Interface fields are public, static and final by default, and methods are public and abstract.
+
+An interface is similar to a class in the following ways:
+---------------------------------------------------------------
+    An interface can contain any number of methods.
+
+    An interface is written in a file with a .java extension, with the name of the interface matching the name of the file.
+
+    The bytecode of an interface appears in a .class file.
+
+    Interfaces appear in packages, and their corresponding bytecode file must be in a directory structure that matches the package name.
+
+However, an interface is different from a class in several ways, including:
+-------------------------------------------------------------------------------------
+    You cannot instantiate an interface.
+
+    An interface does not contain any constructors.
+
+    All of the methods in an interface are abstract.
+
+    An interface cannot contain instance fields. The only fields that can appear in an interface must be declared both static and final.
+
+    An interface is not extended by a class; it is implemented by a class.
+
+    An interface can extend multiple interfaces.
+
+Declaring Interfaces:
+
+The interface keyword is used to declare an interface.
+
+Syn:-
+ 	interface interfaceName
+	{
+	}
+
+Implementing Interfaces:
+------------------------------
+When a class implements an interface, you can think of the class as signing a contract, agreeing to perform the specific behaviors of the interface. If a class does not perform all the behaviors of the interface, the class must declare itself as abstract.
+
+A class uses the implements keyword to implement an interface. The implements keyword appears in the class declaration following the extends portion of the declaration.
+
+Syn:-
+	class ClassName implements InterfaceName
+	{
+		----
+		----
+	}
+
+Example
+----------
+
+Multiple inheritance in Java by interface
+-----------------------------------------------
+If a class implements multiple interfaces, or an interface extends multiple interfaces i.e. known as multiple inheritance.

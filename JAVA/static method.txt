@@ -1,0 +1,124 @@
+//Demo on Static method
+
+public class Calculate {
+    public static int Cube(int x)
+    {
+        return x*x*x;
+    }
+}
+
+//Main method
+import java.util.Scanner;
+
+public class StaticMethodDemo {
+
+    public static void main(String[] args) {
+        int n;
+        System.out.println("Enter a number: ");
+        Scanner input=new Scanner(System.in);
+        n=input.nextInt();
+        System.out.println("Cube="+Calculate.Cube(n));
+    }
+    
+}
+
+
+
+Non Static Method -> can be accessed using an object
+Example:
+		Emp e=new Emp();
+		e.ReadEmp();
+
+Static method -> can be accssed using class
+Example:
+		Calculate.Cube();
+
+Note: Static class doesnot have any object. 
+
+	The difference between static and non-static class is "non-static classes can be invoked with the help of object", where as "static classes can be invoked with class name"
+
+//Multiple Max functions
+
+import java.util.Scanner;
+public class MultipleMaxFunDemo {
+
+    public static void main(String[] args) {
+            int a,b;
+            float x,y;
+            System.out.println("Enter 2 numbers: ");
+            Scanner input=new Scanner(System.in);
+            a=input.nextInt();
+            b=input.nextInt();
+            
+            System.out.println("Enter 2 floats: ");
+            x=input.nextFloat();
+            y=input.nextFloat();
+            
+            System.out.println("The max is:"+MaxInt(a,b));
+            System.out.println("The float is:"+MaxFloat(x,y));
+    }
+    static int MaxInt(int a,int b)
+    {
+        if(a>b)
+            return a;
+        else
+            return b;
+    }
+    static float MaxFloat(float x,float y)
+    {
+        if(x>y)
+            return x;
+        else
+            return y;
+    }
+}
+
+Polymorphism
+------------
+It is a greek word. It means many operations can be done using single name or operator. These are of 2 types.
+	i) Compile Time Polymorphism
+	ii) Run time polymorphism
+
+Method Overloading/Function Overloading
+---------------------------------------
+  The same method name can be used for different data types or different types of arguments is called "Method Overloading".
+
+//Demo on Method Overloading
+
+import java.util.Scanner;
+public class MultipleMaxFunDemo {
+
+    public static void main(String[] args) {
+            int a,b;
+            float x,y;
+            System.out.println("Enter 2 numbers: ");
+            Scanner input=new Scanner(System.in);
+            a=input.nextInt();
+            b=input.nextInt();
+            
+            System.out.println("Enter 2 floats: ");
+            x=input.nextFloat();
+            y=input.nextFloat();
+            
+            System.out.println("The max is:"+Max(a,b));
+            System.out.println("The float is:"+Max(x,y));
+    }
+    static int Max(int a,int b)
+    {
+        if(a>b)
+            return a;
+        else
+            return b;
+    }
+    static float Max(float x,float y)
+    {
+        if(x>y)
+            return x;
+        else
+            return y;
+    }
+}
+
+				Inheritance
+				-----------
+	The creation of a new classes from already existing classes is called "Inheritance". The new class is called "Sub Class" and the already existing class is called "Super Class". It is also known as "IS-A" relationship.
