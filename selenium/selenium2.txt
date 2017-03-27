@@ -1,0 +1,117 @@
+view sourceprint?
+1
+package net.qaautomation.examples;
+2
+ 
+3
+import org.openqa.selenium.By;
+4
+import org.openqa.selenium.WebDriver;
+5
+import org.openqa.selenium.firefox.FirefoxDriver;
+6
+import org.openqa.selenium.support.ui.ExpectedCondition;
+7
+import org.openqa.selenium.support.ui.Wait;
+8
+import org.openqa.selenium.support.ui.WebDriverWait;
+9
+ 
+10
+/**
+11
+ * Search Google example.
+12
+ *
+13
+ * @author Rahul
+14
+ */
+15
+public class GoogleSearch {
+16
+    static WebDriver driver;
+17
+    static Wait<WebDriver> wait;
+18
+ 
+19
+    public static void main(String[] args) {
+20
+        driver = new FirefoxDriver();
+21
+        wait = new WebDriverWait(driver, 30);
+22
+        driver.get("http://www.google.com/");
+23
+ 
+24
+        boolean result;
+25
+        try {
+26
+            result = firstPageContainsQAANet();
+27
+        } catch(Exception e) {
+28
+            e.printStackTrace();
+29
+            result = false;
+30
+        } finally {
+31
+            driver.close();
+32
+        }
+33
+ 
+34
+        System.out.println("Test " + (result? "passed." : "failed."));
+35
+        if (!result) {
+36
+            System.exit(1);
+37
+        }
+38
+    }
+39
+ 
+40
+    private static boolean firstPageContainsQAANet() {
+41
+        //type search query
+42
+        driver.findElement(By.name("q")).sendKeys("qa automation\n");
+43
+ 
+44
+        // click search
+45
+        driver.findElement(By.name("btnG")).click();
+46
+ 
+47
+        // Wait for search to complete
+48
+        wait.until(new ExpectedCondition<Boolean>() {
+49
+            public Boolean apply(WebDriver webDriver) {
+50
+                System.out.println("Searching ...");
+51
+                return webDriver.findElement(By.id("resultStats")) != null;
+52
+            }
+53
+        });
+54
+ 
+55
+        // Look for QAAutomation.net in the results
+56
+        return driver.findElement(By.tagName("body")).getText().contains("qaautomation.net");
+57
+    }
+58
+}
